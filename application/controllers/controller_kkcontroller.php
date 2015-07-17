@@ -31,7 +31,7 @@ class Controller_kkcontroller extends wservice
                     GetConfigurationInfo();
                     break;
                 case ACT_CTRLR_GET_MYCONF_DATA:
-                    GetConfigurationData()
+                    GetConfigurationData();
                     break;
                 case ACT_CTRLR_GET_PLUGIN_INFO:
                     break;
