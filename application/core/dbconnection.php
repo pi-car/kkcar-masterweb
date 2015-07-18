@@ -22,7 +22,6 @@ class dbconnection {
     {
         $result = pg_query($this->dbconn,$query) or die('Query failed: ' . pg_last_error());
         pg_close($this->dbconn);
-        echo $result;
         return  pg_fetch_array($result);
     }
     

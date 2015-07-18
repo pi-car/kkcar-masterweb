@@ -25,9 +25,11 @@ class model_kkcontroller extends Model {
         }
         
         
-        public function get_config()
+        public function get_config($MyID)
         {
-            return $this->dbc->ExecQuery("SELECT * FROM configurations");
+           
+            
+            return $this->dbc->ExecQuery("SELECT * FROM configurations WHERE uuid='" . $MyID."'");
             
         }
          public function get_config_data()

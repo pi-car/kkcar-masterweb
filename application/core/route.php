@@ -33,12 +33,6 @@ class Route
 		$controller_name = 'Controller_'.$controller_name;
 		$action_name = 'Action_'.$action_name;
 
-		/*
-		echo "Model: $model_name <br>";
-		echo "Controller: $controller_name <br>";
-		echo "Action: $action_name <br>";
-		*/
-
 		// подцепляем файл с классом модели (файла модели может и не быть)
 
 		$model_file = strtolower($model_name).'.php';
