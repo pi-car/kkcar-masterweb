@@ -46,31 +46,38 @@ class Controller_kkcontroller extends wservice {
     function GetConfigurationInfo($MyID) {
         $resData = $this->model->get_config($MyID);
         $res = array(
-            'AnswerState' => 'ANS_CONF_OK',
+            'AnswerState' => '0',
             'Version' => 1,
             'JsonData' => json_encode($resData)
         );
+        header('Content-type: application/json');
         echo json_encode($res);
     }
 
     function GetConfigurationData() {
 
         $resData = $this->model->get_config($MyID);
+        if ($resData==FALSE)
+            AnswerError('request error, wrong uuid?');
+        
         $res = array(
-            'AnswerState' => 'ANS_CONF_OK',
+            'AnswerState' => '0',
             'Version' => 1,
             'JsonData' => json_encode($resData)
         );
+        header('Content-type: application/json');
         echo json_encode($res);
     }
 
     function AnswerError($dat) {
         $res = array(
-            'AnswerState' => 'ANS_ERR',
+            'AnswerState' => '1',
             'Version' => 1,
             'JsonData' => "Error: ".$dat
         );
+        header('Content-type: application/json');
         echo json_encode($res);
+        die();
     }
 
 }

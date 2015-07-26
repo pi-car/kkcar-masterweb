@@ -27,9 +27,7 @@ class model_kkcontroller extends Model {
         
         public function get_config($MyID)
         {
-           
-            
-            return $this->dbc->ExecQuery("SELECT * FROM configurations WHERE uuid='" . $MyID."'");
+            return $this->dbc->ExecQuery("SELECT kkcar.uuid AS kkcaruuid,configurations.uuid AS confuuid,configurations.stamp AS confstamp from kkcar INNER JOIN configurations ON (configurations.id=kkcar.activeconfiguration) WHERE kkcar.uuid='" . $MyID."'");
             
         }
          public function get_config_data()
