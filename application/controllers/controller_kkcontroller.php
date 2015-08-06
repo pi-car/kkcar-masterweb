@@ -37,6 +37,12 @@ class Controller_kkcontroller extends wservice {
                 break;
             case ACT_CTRLR_GET_PLUGIN_DATA:
                 break;
+            case ACT_CTRLR_GET_FILES_INFO_BIN:
+                GetFilesInfo(TRUE);
+                break;
+            case ACT_CTRLR_GET_FILES_INFO_EXTFILES:
+                GetFilesInfo(FALSE);
+                break;
             default:
                 AnswerError();
                 break;
@@ -56,7 +62,21 @@ class Controller_kkcontroller extends wservice {
 
     function GetConfigurationData() {
 
-        $resData = $this->model->get_config($MyID);
+        $resData = $this->model->get_config_data($MyID);
+        if ($resData==FALSE)
+            AnswerError('request error, wrong uuid?');
+        
+        $res = array(
+            'AnswerState' => '0',
+            'Version' => 1,
+            'JsonData' => json_encode($resData)
+        );
+        header('Content-type: application/json');
+        echo json_encode($res);
+    }
+     function GetFilesInfo($IsBinFile) {
+
+        $resData = $this->model->get_files_info($MyID,$jsrequest,$IsBinFile);
         if ($resData==FALSE)
             AnswerError('request error, wrong uuid?');
         

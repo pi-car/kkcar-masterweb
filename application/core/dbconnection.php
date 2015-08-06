@@ -18,11 +18,12 @@ class dbconnection {
          $this->dbconn = pg_connect("host=localhost dbname=kkcar user=kkcar password=kkcar");
     }
     
-    public function ExecQuery($query)
+    public function ExecQuery($query,$params)
     {
-        $result = pg_query($this->dbconn,$query) or die('Query failed: ' . pg_last_error());
+        $result = pg_query_params($this->dbconn,$query,$params) or die('Query failed: ' . pg_last_error());
         pg_close($this->dbconn);
         return  pg_fetch_array($result);
     }
+   
     
 }
