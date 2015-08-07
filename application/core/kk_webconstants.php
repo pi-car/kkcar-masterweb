@@ -19,3 +19,10 @@ const ACT_CTRLR_GET_PLUGINS_DATA=6;          //get extended plugins info (with f
 const ACT_CTRLR_GET_FILES_INFO_BIN = 10;          //get bin files info
 const ACT_CTRLR_GET_FILES_INFO_EXTCONF=11;        //get conf files info
 const ACT_CTRLR_DATA_KKPIN=50;               //KKSystem PIN
+
+
+    const PARAM_CTRLR_POST_REQUEST_ACT = "action";
+    const PARAM_CTRLR_POST_REQUEST_MYUUID = "myid";
+    const PARAM_CTRLR_POST_REQUEST_CONFUUID = "confuid";
+    const PARAM_CTRLR_POST_REQUEST_REQFILESBIN = "reqfilesbin";
+    const PARAM_CTRLR_POST_REQUEST_OBJ = "json_object";

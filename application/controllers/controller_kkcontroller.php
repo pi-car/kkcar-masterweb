@@ -18,13 +18,13 @@ class Controller_kkcontroller extends wservice {
     }
 
     function Action_request() {
-        if (!isset($_POST['action'])) {
+        if (!isset($_POST[PARAM_CTRLR_POST_REQUEST_ACT])) {
             $this->AnswerError('bad request');
             return;
         }
 
-        $action = (int) filter_input(INPUT_POST, 'action');
-        $myid =  filter_input(INPUT_POST, 'myid');
+        $action = (int) filter_input(INPUT_POST, PARAM_CTRLR_POST_REQUEST_ACT);
+        $myid =  filter_input(INPUT_POST, PARAM_CTRLR_POST_REQUEST_MYUUID);
 
         switch ($action) {
             case ACT_CTRLR_GET_MYCONF_INFO:
@@ -76,7 +76,12 @@ class Controller_kkcontroller extends wservice {
     }
      function GetFilesInfo($IsBinFile) {
 
-        $resData = $this->model->get_files_info($MyID,$jsrequest,$IsBinFile);
+         if ($IsBinFile)
+             $reqFiles=filter_input(INPUT_POST, PARAM_CTRLR_POST_REQUEST_);
+             else
+             $confUID=filter_input(INPUT_POST, PARAM_CTRLR_POST_REQUEST_CONFUUID);
+         
+        $resData = $this->model->get_files_info($MyID,$confUID,$IsBinFile);
         if ($resData==FALSE)
             AnswerError('request error, wrong uuid?');
         
