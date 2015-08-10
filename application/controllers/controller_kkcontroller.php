@@ -24,24 +24,24 @@ class Controller_kkcontroller extends wservice {
         }
 
         $action = (int) filter_input(INPUT_POST, PARAM_CTRLR_POST_REQUEST_ACT);
-        $myid =  filter_input(INPUT_POST, PARAM_CTRLR_POST_REQUEST_MYUUID);
+        $myid = filter_input(INPUT_POST, PARAM_CTRLR_POST_REQUEST_MYUUID);
 
         switch ($action) {
             case ACT_CTRLR_GET_MYCONF_INFO:
                 $this->GetConfigurationInfo($myid);
                 break;
             case ACT_CTRLR_GET_MYCONF_DATA:
-                $this->GetConfigurationData();
+                $this->GetConfigurationData($myid);
                 break;
             case ACT_CTRLR_GET_PLUGIN_INFO:
                 break;
             case ACT_CTRLR_GET_PLUGIN_DATA:
                 break;
             case ACT_CTRLR_GET_FILES_INFO_BIN:
-                GetFilesInfo(TRUE);
+                $this->GetFilesInfo($myid,True);
                 break;
-            case ACT_CTRLR_GET_FILES_INFO_EXTFILES:
-                GetFilesInfo(FALSE);
+            case ACT_CTRLR_GET_FILES_INFO_EXTCONF:
+                $this->GetFilesInfo($myid,False);
                 break;
             default:
                 AnswerError();
@@ -51,6 +51,7 @@ class Controller_kkcontroller extends wservice {
 
     function GetConfigurationInfo($MyID) {
         $resData = $this->model->get_config($MyID);
+
         $res = array(
             'AnswerState' => '0',
             'Version' => 1,
@@ -60,31 +61,39 @@ class Controller_kkcontroller extends wservice {
         echo json_encode($res);
     }
 
-    function GetConfigurationData() {
+    function GetConfigurationData($MyID) {
 
         $resData = $this->model->get_config_data($MyID);
-        if ($resData==FALSE)
-            AnswerError('request error, wrong uuid?');
-        
+        if ($resData == FALSE)
+            $this->AnswerError('request error, wrong uuid?');
+
+        $resPre = array(
+            'kkcaruid' => $MyID,
+            'configurations' => $resData
+        );
         $res = array(
             'AnswerState' => '0',
             'Version' => 1,
-            'JsonData' => json_encode($resData)
+            'JsonData' => json_encode($resPre)
         );
         header('Content-type: application/json');
         echo json_encode($res);
     }
-     function GetFilesInfo($IsBinFile) {
 
-         if ($IsBinFile)
-             $reqFiles=filter_input(INPUT_POST, PARAM_CTRLR_POST_REQUEST_);
-             else
-             $confUID=filter_input(INPUT_POST, PARAM_CTRLR_POST_REQUEST_CONFUUID);
-         
-        $resData = $this->model->get_files_info($MyID,$confUID,$IsBinFile);
-        if ($resData==FALSE)
-            AnswerError('request error, wrong uuid?');
-        
+    function GetFilesInfo($MyID,$IsBinFile) {
+        $reqFiles="";
+        $confUID="";
+        if ($IsBinFile) {
+            $reqFiles = filter_input(INPUT_POST, PARAM_CTRLR_POST_REQUEST_REQFILESBIN);
+        } else {
+            $confUID = filter_input(INPUT_POST, PARAM_CTRLR_POST_REQUEST_CONFUUID);
+        }
+
+        $resData = $this->model->get_files_info($MyID,$reqFiles, $confUID, $IsBinFile);
+        if ($resData == FALSE) {
+            $this->AnswerError('request error, wrong uuid?');
+        }
+
         $res = array(
             'AnswerState' => '0',
             'Version' => 1,
@@ -98,7 +107,7 @@ class Controller_kkcontroller extends wservice {
         $res = array(
             'AnswerState' => '1',
             'Version' => 1,
-            'JsonData' => "Error: ".$dat
+            'JsonData' => "Error: " . $dat
         );
         header('Content-type: application/json');
         echo json_encode($res);

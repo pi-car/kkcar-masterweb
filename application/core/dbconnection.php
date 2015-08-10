@@ -20,14 +20,10 @@ class dbconnection {
     
     public function ExecQuery($query,$params)
     {
-        echo $query;
-        echo $params;
-        die();
-        
-        
-        $result = pg_query_params($this->dbconn,$query,$params) or die('Query failed: ' . pg_last_error());
+        $result = pg_query_params($this->dbconn,$query,$params);
         pg_close($this->dbconn);
-        return  pg_fetch_array($result);
+        $res= pg_fetch_all($result);
+        return  $res;
     }
    
     
