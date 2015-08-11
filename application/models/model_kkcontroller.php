@@ -61,15 +61,14 @@ class model_kkcontroller extends Model {
 
     public function get_files_info($MyID, $RequiredFiles, $ConfigUID, $IsBinFiles) {
         if ($IsBinFiles==false) {
-
             return $this->dbc->ExecQuery(
                     "SELECT"
                     ."  files.name,"
                     ."  files.url"
                     ." FROM"
                     ."  files"
-                    ." WHERE files.owner_conf IN ( SELECT configurations.id FROM configurations"
-                    ." WHERE configurations.uuid=$1)", array($ConfigUID));
+                    ." WHERE files.owner_conf IN (SELECT configurations.id FROM configurations WHERE configurations.ownerconf=(SELECT configurations.id FROM configurations WHERE configurations.uuid=$1))"
+                    , array($ConfigUID));
         } else {
             return $this->dbc->ExecQuery(   
                         "SELECT"
