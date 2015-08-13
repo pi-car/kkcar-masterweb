@@ -18,7 +18,7 @@ Modified by VitalySwipe
 		<meta name="keywords" content="" />
 		<title>KKCoche Webservice</title>
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
-		<script src="/js/jquery-1.6.2.js" type="text/javascript"></script>
+		<script src="/js/jquery.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<div id="wrapper">
