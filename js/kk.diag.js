@@ -9,7 +9,7 @@ var kk_diag_livedata_timerInterval;
 
 function InitLiveInfo()
 {
-    kk_diag_livedata_timerInterval=20000;
+    kk_diag_livedata_timerInterval=30000;
     RequestLiveData();
 }
 
@@ -18,7 +18,7 @@ function RequestLiveData()
     var LiveData;
     LiveData=$.getJSON('/diagnostic/getliveinfo');
     UpdateLiveInfoTable(LiveData);
-    kk_diag_livedata_timer=setTimeout(RequestLiveData(),kk_diag_livedata_timerInterval);
+    setTimeout("RequestLiveData();",kk_diag_livedata_timerInterval);
 }
 
 function UpdateLiveInfoTable(Data)

@@ -26,7 +26,7 @@ class model_diagnostic extends Model {
                 . "     liveinfo.value as value,"
                 . "     liveinfo.timestamp as timestamp"
                 . " FROM "
-                . " odbpids, liveinfo "
+                . " \"odbpids\", liveinfo "
                 . " WHERE "
                 . "     (odbpids.id=liveinfo.param_id)"
                 . " AND"

@@ -23,7 +23,7 @@ class Controller_diagnostic extends Controller {
     function GetLiveInfo($MyID) {
         $resData = $this->model->get_liveinfo($MyID);
 
-        header('Content-type: application/json');
+       // header('Content-type: application/json');
         echo json_encode($resData);
     }
 
