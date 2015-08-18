@@ -65,7 +65,7 @@ class model_kkcontroller extends Model {
                     "SELECT"
                     ."  files.name,"
                     ."  files.url"
-                    ." FROM"
+                    ." FROM "
                     ."  files"
                     ." WHERE files.owner_conf IN (SELECT configurations.id FROM configurations WHERE configurations.ownerconf=(SELECT configurations.id FROM configurations WHERE configurations.uuid=$1))"
                     , array($ConfigUID));
@@ -74,7 +74,7 @@ class model_kkcontroller extends Model {
                         "SELECT"
                         ."  files.name,"
                         ."  files.url"
-                        ." FROM"
+                        ." FROM "
                         ."  files"
                         ." WHERE"
                         ."  files.owner_plugin IN ($1)", array($RequiredFiles));
