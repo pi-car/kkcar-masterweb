@@ -60,5 +60,27 @@ class model_diagnostic extends Model {
                         . "     WHERE "
                         . "         kkcar.uuid=$1)", array($MyID));
     }
+    
+    public function registercmd_cleardtc($MyID) {
+
+        return $this->dbc->ExecQuery(
+                        "SELECT "
+                        . "     liveinfo_dtc.id as paramid,"
+                        . "     odb_dtc.dtc as value,"
+                        . "     odb_dtc.descriptionlocal as localdesc,"
+                        . "     liveinfo_dtc.timestamp as timestamp"
+                        . " FROM "
+                        . "     odb_dtc, liveinfo_dtc "
+                        . " WHERE "
+                        . "     (odb_dtc.id=liveinfo_dtc.dtc_val)"
+                        . " AND"
+                        . "     liveinfo_dtc.kkcar_id = "
+                        . "     (SELECT "
+                        . "         kkcar.id "
+                        . "     FROM "
+                        . "         kkcar "
+                        . "     WHERE "
+                        . "         kkcar.uuid=$1)", array($MyID));
+    }
 
 }

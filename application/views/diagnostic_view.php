@@ -46,8 +46,8 @@
         </div>
              
         <div id="kk_diag_main_errors_buttons">
-            <a href="javascript:RequestDTCCodes()">Обновить список ошибок</a>
-            <a href="javascript:none">Очистить ошибки</a>
+            <button onclick="RequestDTCCodes()">Обновить список ошибок</button>
+            <button onclick="SendDTCClear()">Очистить ошибки (сброс ошибок автомобиля)</button>
         </div>
     </div>
     

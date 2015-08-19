@@ -8,14 +8,23 @@ var kk_diag_livedata_timer;
 var kk_diag_livedata_timerInterval;
 var kk_diag_liveinfo_table_prefix = "kk_diag_liveinfo_table_";
 var kk_diag_liveinfodtc_table_prefix = "kk_diag_liveinfodtc_table_";
+var kk_main_kkcommand_cmdlist_prefix = "kk_kkcmd_commandslist_list_";
 
 function InitLiveInfo()
 {
     kk_diag_livedata_timerInterval = 2000;
+    RequestActiveCommands();
     RequestDTCCodes();
     RequestLiveData();
 }
 
+function RequestActiveCommands()
+{
+    var LiveData;
+    $.getJSON('/configuration/getactivecommands', function (Data) {
+        UpdateActiveCommandsList(Data);
+    });
+}
 function RequestDTCCodes()
 {
     var LiveData;
@@ -33,6 +42,13 @@ function RequestLiveData()
         setTimeout("RequestLiveData();", kk_diag_livedata_timerInterval);
     });
 
+    
+}
+
+function SendDTCClear()
+{
+   $.post("/diagnostic/")
+    
     
 }
 
@@ -67,5 +83,19 @@ function UpdateLiveInfoTableDTC(Data)
             $("#"+kk_diag_liveinfodtc_table_prefix+Data[i].paramid + " td[tag='timestamp']").text(Data[i].timestamp);
         }
     }
+}
 
+function UpdateActiveCommandsList(Data)
+{
+    for (var i = 0; i < Data.length; i++) {
+        if ($("#kk_kkcmd_commandslist_list").find("#"+kk_main_kkcommand_cmdlist_prefix+Data[i].paramid).length===0)
+        {
+            $("#kk_kkcmd_commandslist_list").append("<option id='"+kk_main_kkcommand_cmdlist_prefix+Data[i].paramid+"'>"+Data[i].desc+"</option>");
+        }
+        else
+        {
+            $("#"+kk_main_kkcommand_cmdlist_prefix+Data[i].paramid).text(Data[i].desc);
+
+        }
+    }
 }
