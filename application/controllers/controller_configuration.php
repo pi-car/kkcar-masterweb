@@ -17,11 +17,17 @@ class Controller_configuration extends Controller {
          $myid = '2e2efd7b-ab83-42fa-9c00-2e45bb4b3ba1'; //in this must be a session!!!
         $this->GetActiveCommands($myid);
     }
+     function action_getconfinfo() {
+         $myid = '2e2efd7b-ab83-42fa-9c00-2e45bb4b3ba1'; //in this must be a session!!!
+        $this->GetConfigurationInfo($myid);
+    }
 
     function GetActiveCommands($MyID) {
         $resData = $this->model->get_activecommands($MyID);
-
-        // header('Content-type: application/json');
+        echo json_encode($resData);
+    }
+  function GetConfigurationInfo($MyID) {
+        $resData = $this->model->get_getconfinfo($MyID);
         echo json_encode($resData);
     }
 

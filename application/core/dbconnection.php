@@ -25,6 +25,12 @@ class dbconnection {
         $res= pg_fetch_all($result);
         return  $res;
     }
-   
+   public function ExecQuerySingle($query,$params)
+    {
+        $result = pg_query_params($this->dbconn,$query,$params);
+        pg_close($this->dbconn);
+        $res= pg_fetch_row($result);
+        return  $res;
+    }
     
 }

@@ -47,7 +47,7 @@ function RequestLiveData()
 
 function SendDTCClear()
 {
-   $.post("/diagnostic/")
+   $.post("/diagnostic/sendcleardtc");
     
     
 }

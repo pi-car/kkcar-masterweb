@@ -48,15 +48,6 @@
                 </div>
             
             </div>
-            <div id="page-bottom">
-                <div id="page-bottom-sidebar">
-                    <h3>Наши контакты</h3>
-                </div>
-                <div id="page-bottom-content">
-                    <h3>О Компании</h3>
-                </div>
-                <br class="clearfix" />
-            </div>
         </div>
         <div id="footer">
             <a href="/">Garikk Development</a> &copy; 2015</a>
