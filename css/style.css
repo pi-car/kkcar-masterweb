@@ -157,7 +157,6 @@ a {
 #page {
 	margin: 0;
 	position: relative;
-	//width: 900px;
 	padding: 20px 40px 0 40px;
 }
 
@@ -200,10 +199,10 @@ a {
 }
 #sidebar_right {
 	position: relative;
-	left: -20px;
+	right: -20px;
 	top: -20px;
 	float: right;
-	width: 240px;
+	width: 340px;
 	background: #f3f3f3;
 	padding: 20px;
 	border: solid 1px #e3e3e3;
@@ -248,13 +247,19 @@ a {
 #kk_kkcmd_commandslist_list {
         width: 240px;   
 }
-#kk_config_carinfo
-{
-       float:left;
-       width:50%;
 
-}
-#kk_config_actions
-{
-       width:50%;
-}
+    .canvas {
+        font-family: tahoma;
+    }
+    .block {
+        position: absolute;
+        border: 1px solid #7DAB76;
+        background-color: #BAFFB0;
+        padding: 3px;
+    }
+    .connector {
+        background-color: #FF9900;
+    }
+    .source-label, .middle-label, .destination-label {
+        padding: 5px;
+    }
