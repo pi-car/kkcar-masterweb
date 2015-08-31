@@ -65,5 +65,24 @@ class model_configuration extends Model {
                         . "      WHERE "
                         . "         kkcar.uuid=$1)", array($MyID));
     }
+    
+     public function get_pluginsconfiguration($MyID) {
+
+        return $this->dbc->ExecQuery(
+                       "SELECT "
+                        . "  configurations.uuid as confuid, "
+                        . "  configurations.configuration as configuration, "
+                        . "  configurations.configurationtype as conftype, "
+                        . "  configurations.description as confdescription	"
+                        . " FROM "
+                        . "  configurations,kkcar "
+                        . " WHERE "
+                        . "  configurations.ownerconf=kkcar.activeconfiguration "
+                        . " AND "
+                        . "  kkcar.uuid=$1 "
+                        , array($MyID));
+    
+
+    }
 }
     

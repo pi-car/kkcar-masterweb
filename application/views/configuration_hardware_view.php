@@ -10,12 +10,10 @@
 </div>
 
 <div id="kk_config_main">
-            <div id="kk_config_config_features">
-                <select id="kk_config_configuration_features_selector"></select>
-            </div>
+
     <div id="kk_config_confmanager">
         <div class="canvas" id="mainCanvas"
-             style="width: 750px; height: 350px; border: 1px solid black;">
+             style="width: 350px; height: 250px; border: 1px solid black;">
             <h1 class="block draggable" id="h1_block"
                 style="left: 10px; top: 10px;">
                 h1 block
