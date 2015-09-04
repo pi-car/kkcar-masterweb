@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.4.4
 -- Dumped by pg_dump version 9.4.4
--- Started on 2015-08-28 15:36:42
+-- Started on 2015-09-04 20:11:24
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -14,7 +14,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 207 (class 3079 OID 16640)
+-- TOC entry 209 (class 3079 OID 16640)
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -22,8 +22,8 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2222 (class 0 OID 0)
--- Dependencies: 207
+-- TOC entry 2231 (class 0 OID 0)
+-- Dependencies: 209
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
@@ -69,7 +69,7 @@ CREATE SEQUENCE "ODB_PID_id_seq"
 ALTER TABLE "ODB_PID_id_seq" OWNER TO postgres;
 
 --
--- TOC entry 2224 (class 0 OID 0)
+-- TOC entry 2233 (class 0 OID 0)
 -- Dependencies: 193
 -- Name: ODB_PID_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -108,12 +108,52 @@ CREATE SEQUENCE accounts_id_seq
 ALTER TABLE accounts_id_seq OWNER TO garikk;
 
 --
--- TOC entry 2227 (class 0 OID 0)
+-- TOC entry 2236 (class 0 OID 0)
 -- Dependencies: 173
 -- Name: accounts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: garikk
 --
 
 ALTER SEQUENCE accounts_id_seq OWNED BY accounts.id;
+
+
+--
+-- TOC entry 208 (class 1259 OID 41330)
+-- Name: confeditor_blockview; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE confeditor_blockview (
+    id integer NOT NULL,
+    configuration integer,
+    plugin integer,
+    x integer,
+    y integer
+);
+
+
+ALTER TABLE confeditor_blockview OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 41328)
+-- Name: confeditor_blockview_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE confeditor_blockview_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE confeditor_blockview_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2239 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: confeditor_blockview_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE confeditor_blockview_id_seq OWNED BY confeditor_blockview.id;
 
 
 --
@@ -145,7 +185,7 @@ CREATE SEQUENCE config_types_id_seq
 ALTER TABLE config_types_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2230 (class 0 OID 0)
+-- TOC entry 2242 (class 0 OID 0)
 -- Dependencies: 175
 -- Name: config_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -189,7 +229,7 @@ CREATE SEQUENCE configurations_id_seq
 ALTER TABLE configurations_id_seq OWNER TO garikk;
 
 --
--- TOC entry 2233 (class 0 OID 0)
+-- TOC entry 2245 (class 0 OID 0)
 -- Dependencies: 177
 -- Name: configurations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: garikk
 --
@@ -226,7 +266,7 @@ CREATE SEQUENCE file_types_id_seq
 ALTER TABLE file_types_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2236 (class 0 OID 0)
+-- TOC entry 2248 (class 0 OID 0)
 -- Dependencies: 188
 -- Name: file_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -268,7 +308,7 @@ CREATE SEQUENCE files_id_seq
 ALTER TABLE files_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2239 (class 0 OID 0)
+-- TOC entry 2251 (class 0 OID 0)
 -- Dependencies: 186
 -- Name: files_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -326,7 +366,7 @@ CREATE SEQUENCE kkcar_commands_id_seq
 ALTER TABLE kkcar_commands_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2243 (class 0 OID 0)
+-- TOC entry 2255 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: kkcar_commands_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -371,7 +411,7 @@ CREATE SEQUENCE kkcar_confinfo_id_seq
 ALTER TABLE kkcar_confinfo_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2246 (class 0 OID 0)
+-- TOC entry 2258 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: kkcar_confinfo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -395,7 +435,7 @@ CREATE SEQUENCE kkcar_id_seq
 ALTER TABLE kkcar_id_seq OWNER TO garikk;
 
 --
--- TOC entry 2248 (class 0 OID 0)
+-- TOC entry 2260 (class 0 OID 0)
 -- Dependencies: 179
 -- Name: kkcar_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: garikk
 --
@@ -434,7 +474,7 @@ CREATE SEQUENCE kkcar_messages_id_seq
 ALTER TABLE kkcar_messages_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2251 (class 0 OID 0)
+-- TOC entry 2263 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: kkcar_messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -490,7 +530,7 @@ CREATE SEQUENCE liveinfo_dtc_id_seq
 ALTER TABLE liveinfo_dtc_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2255 (class 0 OID 0)
+-- TOC entry 2267 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: liveinfo_dtc_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -514,7 +554,7 @@ CREATE SEQUENCE liveinfo_id_seq
 ALTER TABLE liveinfo_id_seq OWNER TO garikk;
 
 --
--- TOC entry 2257 (class 0 OID 0)
+-- TOC entry 2269 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: liveinfo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: garikk
 --
@@ -553,7 +593,7 @@ CREATE SEQUENCE liveinfo_request_configuration_id_seq
 ALTER TABLE liveinfo_request_configuration_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2260 (class 0 OID 0)
+-- TOC entry 2272 (class 0 OID 0)
 -- Dependencies: 191
 -- Name: liveinfo_request_configuration_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -577,7 +617,7 @@ CREATE SEQUENCE liveinfo_request_id_seq
 ALTER TABLE liveinfo_request_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2262 (class 0 OID 0)
+-- TOC entry 2274 (class 0 OID 0)
 -- Dependencies: 190
 -- Name: liveinfo_request_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -614,7 +654,7 @@ CREATE SEQUENCE manufacture_id_seq
 ALTER TABLE manufacture_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2265 (class 0 OID 0)
+-- TOC entry 2277 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: manufacture_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -654,7 +694,7 @@ CREATE SEQUENCE odb_dtc_id_seq
 ALTER TABLE odb_dtc_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2268 (class 0 OID 0)
+-- TOC entry 2280 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: odb_dtc_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -672,7 +712,9 @@ CREATE TABLE plugins (
     uuid text,
     name text,
     description text,
-    version integer
+    version integer,
+    pins_in text,
+    pins_out text
 );
 
 
@@ -694,7 +736,7 @@ CREATE SEQUENCE plugins_id_seq
 ALTER TABLE plugins_id_seq OWNER TO garikk;
 
 --
--- TOC entry 2271 (class 0 OID 0)
+-- TOC entry 2283 (class 0 OID 0)
 -- Dependencies: 183
 -- Name: plugins_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: garikk
 --
@@ -734,7 +776,7 @@ CREATE SEQUENCE system_state_id_seq
 ALTER TABLE system_state_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2274 (class 0 OID 0)
+-- TOC entry 2286 (class 0 OID 0)
 -- Dependencies: 184
 -- Name: system_state_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -743,7 +785,7 @@ ALTER SEQUENCE system_state_id_seq OWNED BY system_state.id;
 
 
 --
--- TOC entry 1999 (class 2604 OID 16693)
+-- TOC entry 2005 (class 2604 OID 16693)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: garikk
 --
 
@@ -751,7 +793,15 @@ ALTER TABLE ONLY accounts ALTER COLUMN id SET DEFAULT nextval('accounts_id_seq':
 
 
 --
--- TOC entry 2000 (class 2604 OID 16694)
+-- TOC entry 2023 (class 2604 OID 41333)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY confeditor_blockview ALTER COLUMN id SET DEFAULT nextval('confeditor_blockview_id_seq'::regclass);
+
+
+--
+-- TOC entry 2006 (class 2604 OID 16694)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -759,7 +809,7 @@ ALTER TABLE ONLY config_types ALTER COLUMN id SET DEFAULT nextval('config_types_
 
 
 --
--- TOC entry 2001 (class 2604 OID 16695)
+-- TOC entry 2007 (class 2604 OID 16695)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: garikk
 --
 
@@ -767,7 +817,7 @@ ALTER TABLE ONLY configurations ALTER COLUMN id SET DEFAULT nextval('configurati
 
 
 --
--- TOC entry 2007 (class 2604 OID 24900)
+-- TOC entry 2013 (class 2604 OID 24900)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -775,7 +825,7 @@ ALTER TABLE ONLY file_types ALTER COLUMN id SET DEFAULT nextval('file_types_id_s
 
 
 --
--- TOC entry 2006 (class 2604 OID 24844)
+-- TOC entry 2012 (class 2604 OID 24844)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -783,7 +833,7 @@ ALTER TABLE ONLY files ALTER COLUMN id SET DEFAULT nextval('files_id_seq'::regcl
 
 
 --
--- TOC entry 2002 (class 2604 OID 16696)
+-- TOC entry 2008 (class 2604 OID 16696)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: garikk
 --
 
@@ -791,7 +841,7 @@ ALTER TABLE ONLY kkcar ALTER COLUMN id SET DEFAULT nextval('kkcar_id_seq'::regcl
 
 
 --
--- TOC entry 2014 (class 2604 OID 41267)
+-- TOC entry 2020 (class 2604 OID 41267)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -799,7 +849,7 @@ ALTER TABLE ONLY kkcar_commands ALTER COLUMN id SET DEFAULT nextval('kkcar_comma
 
 
 --
--- TOC entry 2016 (class 2604 OID 41305)
+-- TOC entry 2022 (class 2604 OID 41305)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -807,7 +857,7 @@ ALTER TABLE ONLY kkcar_confinfo ALTER COLUMN id SET DEFAULT nextval('kkcar_confi
 
 
 --
--- TOC entry 2015 (class 2604 OID 41289)
+-- TOC entry 2021 (class 2604 OID 41289)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -815,7 +865,7 @@ ALTER TABLE ONLY kkcar_messages ALTER COLUMN id SET DEFAULT nextval('kkcar_messa
 
 
 --
--- TOC entry 2003 (class 2604 OID 16697)
+-- TOC entry 2009 (class 2604 OID 16697)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: garikk
 --
 
@@ -823,7 +873,7 @@ ALTER TABLE ONLY liveinfo ALTER COLUMN id SET DEFAULT nextval('liveinfo_id_seq':
 
 
 --
--- TOC entry 2012 (class 2604 OID 33122)
+-- TOC entry 2018 (class 2604 OID 33122)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -831,7 +881,7 @@ ALTER TABLE ONLY liveinfo_dtc ALTER COLUMN id SET DEFAULT nextval('liveinfo_dtc_
 
 
 --
--- TOC entry 2008 (class 2604 OID 33082)
+-- TOC entry 2014 (class 2604 OID 33082)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -839,7 +889,7 @@ ALTER TABLE ONLY liveinfo_request ALTER COLUMN id SET DEFAULT nextval('liveinfo_
 
 
 --
--- TOC entry 2009 (class 2604 OID 33083)
+-- TOC entry 2015 (class 2604 OID 33083)
 -- Name: configuration_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -847,7 +897,7 @@ ALTER TABLE ONLY liveinfo_request ALTER COLUMN configuration_id SET DEFAULT next
 
 
 --
--- TOC entry 2011 (class 2604 OID 33098)
+-- TOC entry 2017 (class 2604 OID 33098)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -855,7 +905,7 @@ ALTER TABLE ONLY manufacture ALTER COLUMN id SET DEFAULT nextval('manufacture_id
 
 
 --
--- TOC entry 2013 (class 2604 OID 33128)
+-- TOC entry 2019 (class 2604 OID 33128)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -863,7 +913,7 @@ ALTER TABLE ONLY odb_dtc ALTER COLUMN id SET DEFAULT nextval('odb_dtc_id_seq'::r
 
 
 --
--- TOC entry 2010 (class 2604 OID 33089)
+-- TOC entry 2016 (class 2604 OID 33089)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -871,7 +921,7 @@ ALTER TABLE ONLY odb_pids ALTER COLUMN id SET DEFAULT nextval('"ODB_PID_id_seq"'
 
 
 --
--- TOC entry 2004 (class 2604 OID 16698)
+-- TOC entry 2010 (class 2604 OID 16698)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: garikk
 --
 
@@ -879,7 +929,7 @@ ALTER TABLE ONLY plugins ALTER COLUMN id SET DEFAULT nextval('plugins_id_seq'::r
 
 
 --
--- TOC entry 2005 (class 2604 OID 16734)
+-- TOC entry 2011 (class 2604 OID 16734)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -887,7 +937,7 @@ ALTER TABLE ONLY system_state ALTER COLUMN id SET DEFAULT nextval('system_state_
 
 
 --
--- TOC entry 2276 (class 0 OID 0)
+-- TOC entry 2288 (class 0 OID 0)
 -- Dependencies: 193
 -- Name: ODB_PID_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -896,7 +946,7 @@ SELECT pg_catalog.setval('"ODB_PID_id_seq"', 1, true);
 
 
 --
--- TOC entry 2180 (class 0 OID 16645)
+-- TOC entry 2187 (class 0 OID 16645)
 -- Dependencies: 172
 -- Data for Name: accounts; Type: TABLE DATA; Schema: public; Owner: garikk
 --
@@ -907,7 +957,7 @@ COPY accounts (id, uuid, login, pass) FROM stdin;
 
 
 --
--- TOC entry 2277 (class 0 OID 0)
+-- TOC entry 2289 (class 0 OID 0)
 -- Dependencies: 173
 -- Name: accounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: garikk
 --
@@ -916,7 +966,26 @@ SELECT pg_catalog.setval('accounts_id_seq', 1, true);
 
 
 --
--- TOC entry 2182 (class 0 OID 16653)
+-- TOC entry 2223 (class 0 OID 41330)
+-- Dependencies: 208
+-- Data for Name: confeditor_blockview; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY confeditor_blockview (id, configuration, plugin, x, y) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2290 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: confeditor_blockview_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('confeditor_blockview_id_seq', 1, false);
+
+
+--
+-- TOC entry 2189 (class 0 OID 16653)
 -- Dependencies: 174
 -- Data for Name: config_types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -928,7 +997,7 @@ COPY config_types (id, type) FROM stdin;
 
 
 --
--- TOC entry 2278 (class 0 OID 0)
+-- TOC entry 2291 (class 0 OID 0)
 -- Dependencies: 175
 -- Name: config_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -937,7 +1006,7 @@ SELECT pg_catalog.setval('config_types_id_seq', 2, true);
 
 
 --
--- TOC entry 2184 (class 0 OID 16661)
+-- TOC entry 2191 (class 0 OID 16661)
 -- Dependencies: 176
 -- Data for Name: configurations; Type: TABLE DATA; Schema: public; Owner: garikk
 --
@@ -952,7 +1021,7 @@ COPY configurations (id, uuid, name, description, configuration, stamp, configur
 
 
 --
--- TOC entry 2279 (class 0 OID 0)
+-- TOC entry 2292 (class 0 OID 0)
 -- Dependencies: 177
 -- Name: configurations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: garikk
 --
@@ -961,7 +1030,7 @@ SELECT pg_catalog.setval('configurations_id_seq', 5, true);
 
 
 --
--- TOC entry 2197 (class 0 OID 24897)
+-- TOC entry 2204 (class 0 OID 24897)
 -- Dependencies: 189
 -- Data for Name: file_types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -973,7 +1042,7 @@ COPY file_types (id, name) FROM stdin;
 
 
 --
--- TOC entry 2280 (class 0 OID 0)
+-- TOC entry 2293 (class 0 OID 0)
 -- Dependencies: 188
 -- Name: file_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -982,7 +1051,7 @@ SELECT pg_catalog.setval('file_types_id_seq', 1, false);
 
 
 --
--- TOC entry 2195 (class 0 OID 24841)
+-- TOC entry 2202 (class 0 OID 24841)
 -- Dependencies: 187
 -- Data for Name: files; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1003,7 +1072,7 @@ COPY files (id, url, owner_conf, name, version, filetype, owner_plugin) FROM std
 
 
 --
--- TOC entry 2281 (class 0 OID 0)
+-- TOC entry 2294 (class 0 OID 0)
 -- Dependencies: 186
 -- Name: files_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1012,7 +1081,7 @@ SELECT pg_catalog.setval('files_id_seq', 8, true);
 
 
 --
--- TOC entry 2186 (class 0 OID 16669)
+-- TOC entry 2193 (class 0 OID 16669)
 -- Dependencies: 178
 -- Data for Name: kkcar; Type: TABLE DATA; Schema: public; Owner: garikk
 --
@@ -1023,7 +1092,7 @@ COPY kkcar (id, name, owner, vehicle, uuid, activeconfiguration) FROM stdin;
 
 
 --
--- TOC entry 2210 (class 0 OID 41264)
+-- TOC entry 2217 (class 0 OID 41264)
 -- Dependencies: 202
 -- Data for Name: kkcar_commands; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1035,7 +1104,7 @@ COPY kkcar_commands (id, kkcar, description, command, status, "timestamp") FROM 
 
 
 --
--- TOC entry 2282 (class 0 OID 0)
+-- TOC entry 2295 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: kkcar_commands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1044,7 +1113,7 @@ SELECT pg_catalog.setval('kkcar_commands_id_seq', 1, false);
 
 
 --
--- TOC entry 2214 (class 0 OID 41302)
+-- TOC entry 2221 (class 0 OID 41302)
 -- Dependencies: 206
 -- Data for Name: kkcar_confinfo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1055,7 +1124,7 @@ COPY kkcar_confinfo (id, kkcar, carinfo, currentconfig, configversion, kkcontrol
 
 
 --
--- TOC entry 2283 (class 0 OID 0)
+-- TOC entry 2296 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: kkcar_confinfo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1064,7 +1133,7 @@ SELECT pg_catalog.setval('kkcar_confinfo_id_seq', 1, false);
 
 
 --
--- TOC entry 2284 (class 0 OID 0)
+-- TOC entry 2297 (class 0 OID 0)
 -- Dependencies: 179
 -- Name: kkcar_id_seq; Type: SEQUENCE SET; Schema: public; Owner: garikk
 --
@@ -1073,7 +1142,7 @@ SELECT pg_catalog.setval('kkcar_id_seq', 1, true);
 
 
 --
--- TOC entry 2212 (class 0 OID 41286)
+-- TOC entry 2219 (class 0 OID 41286)
 -- Dependencies: 204
 -- Data for Name: kkcar_messages; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1083,7 +1152,7 @@ COPY kkcar_messages (id, kkcar, message, "timestamp") FROM stdin;
 
 
 --
--- TOC entry 2285 (class 0 OID 0)
+-- TOC entry 2298 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: kkcar_messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1092,7 +1161,7 @@ SELECT pg_catalog.setval('kkcar_messages_id_seq', 1, false);
 
 
 --
--- TOC entry 2188 (class 0 OID 16677)
+-- TOC entry 2195 (class 0 OID 16677)
 -- Dependencies: 180
 -- Data for Name: liveinfo; Type: TABLE DATA; Schema: public; Owner: garikk
 --
@@ -1106,7 +1175,7 @@ COPY liveinfo (id, kkcar_id, name, param_id, value, "timestamp") FROM stdin;
 
 
 --
--- TOC entry 2206 (class 0 OID 33119)
+-- TOC entry 2213 (class 0 OID 33119)
 -- Dependencies: 198
 -- Data for Name: liveinfo_dtc; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1119,7 +1188,7 @@ COPY liveinfo_dtc (id, dtc_val, "timestamp", kkcar_id) FROM stdin;
 
 
 --
--- TOC entry 2286 (class 0 OID 0)
+-- TOC entry 2299 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: liveinfo_dtc_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1128,7 +1197,7 @@ SELECT pg_catalog.setval('liveinfo_dtc_id_seq', 3, true);
 
 
 --
--- TOC entry 2287 (class 0 OID 0)
+-- TOC entry 2300 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: liveinfo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: garikk
 --
@@ -1137,7 +1206,7 @@ SELECT pg_catalog.setval('liveinfo_id_seq', 1, false);
 
 
 --
--- TOC entry 2200 (class 0 OID 33079)
+-- TOC entry 2207 (class 0 OID 33079)
 -- Dependencies: 192
 -- Data for Name: liveinfo_request; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1147,7 +1216,7 @@ COPY liveinfo_request (id, configuration_id, "PID", "interval") FROM stdin;
 
 
 --
--- TOC entry 2288 (class 0 OID 0)
+-- TOC entry 2301 (class 0 OID 0)
 -- Dependencies: 191
 -- Name: liveinfo_request_configuration_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1156,7 +1225,7 @@ SELECT pg_catalog.setval('liveinfo_request_configuration_id_seq', 1, false);
 
 
 --
--- TOC entry 2289 (class 0 OID 0)
+-- TOC entry 2302 (class 0 OID 0)
 -- Dependencies: 190
 -- Name: liveinfo_request_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1165,7 +1234,7 @@ SELECT pg_catalog.setval('liveinfo_request_id_seq', 1, false);
 
 
 --
--- TOC entry 2204 (class 0 OID 33095)
+-- TOC entry 2211 (class 0 OID 33095)
 -- Dependencies: 196
 -- Data for Name: manufacture; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1177,7 +1246,7 @@ COPY manufacture (id, name) FROM stdin;
 
 
 --
--- TOC entry 2290 (class 0 OID 0)
+-- TOC entry 2303 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: manufacture_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1186,7 +1255,7 @@ SELECT pg_catalog.setval('manufacture_id_seq', 1, false);
 
 
 --
--- TOC entry 2207 (class 0 OID 33123)
+-- TOC entry 2214 (class 0 OID 33123)
 -- Dependencies: 199
 -- Data for Name: odb_dtc; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1199,7 +1268,7 @@ COPY odb_dtc (id, manufacture, dtc, descriptionlocal, descriptionodb) FROM stdin
 
 
 --
--- TOC entry 2291 (class 0 OID 0)
+-- TOC entry 2304 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: odb_dtc_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1208,7 +1277,7 @@ SELECT pg_catalog.setval('odb_dtc_id_seq', 3, true);
 
 
 --
--- TOC entry 2202 (class 0 OID 33086)
+-- TOC entry 2209 (class 0 OID 33086)
 -- Dependencies: 194
 -- Data for Name: odb_pids; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1222,22 +1291,22 @@ COPY odb_pids (id, manufacture, "PID", descriptionlocal, descriptionodb, "PID_MO
 
 
 --
--- TOC entry 2190 (class 0 OID 16685)
+-- TOC entry 2197 (class 0 OID 16685)
 -- Dependencies: 182
 -- Data for Name: plugins; Type: TABLE DATA; Schema: public; Owner: garikk
 --
 
-COPY plugins (id, uuid, name, description, version) FROM stdin;
-1	44b5dab1-f596-458a-b09b-d9565b91464e	KKODB2Reader	Basic ODB2 Reader	1
-2	7fbac0f7-6939-4380-bcb0-0ef8b1580fbf	KKLEDDisplay	Basic LED Display	1
-3	b5b50412-c02a-4674-a112-ddc5805ea4e5	KKDataDisplay	Simple ODB diag display processor	1
-4	62d1026f-5297-4951-890d-61d75ae67d02	KKControls	hardware buttons plugin	1
-5	10000000-0000-0000-0000-000000000000	KKController	KKController	1
+COPY plugins (id, uuid, name, description, version, pins_in, pins_out) FROM stdin;
+5	10000000-0000-0000-0000-000000000000	KKController	KKController	1	\N	\N
+1	44b5dab1-f596-458a-b09b-d9565b91464e	KKODB2Reader	Basic ODB2 Reader	1	{\n  "pins": [\n    "PIN_KK_ODB2_COMMAND"\n    ]\n }	{\n  "pins": [\n    "KK_PLUGIN_BASE_ODB2_DATA",\n   "KK_PLUGIN_BASE_ODB2_RAW"\n    ]\n }
+2	7fbac0f7-6939-4380-bcb0-0ef8b1580fbf	KKLEDDisplay	Basic LED Display	1	{\n  "pins": [\n    "PIN_KK_LED_COMMAND",\n    "PIN_KK_LED_DATA",\n    "PIN_KK_LED_RAW"\n    ]\n }	{\r\n  "pins": [\r\n    "PIN_KK_LED_DATA"\r\n    ]\r\n }
+3	b5b50412-c02a-4674-a112-ddc5805ea4e5	KKDataDisplay	Simple ODB diag display processor	1	{\n  "pins": [\n    "PIN_KK_LED_DATA","PIN_KK_ODB2_DATA","PIN_KK_CTRL_DATA"\n    ]}	{\n  "pins": [\n    "PIN_KK_LED_COMMAND",\n    "PIN_KK_LED_DATA"\n    ]}
+4	62d1026f-5297-4951-890d-61d75ae67d02	KKControls	hardware buttons plugin	1	\N	{\n  "pins": [\n    "PIN_KK_CTRL_DATA"\n    ]}
 \.
 
 
 --
--- TOC entry 2292 (class 0 OID 0)
+-- TOC entry 2305 (class 0 OID 0)
 -- Dependencies: 183
 -- Name: plugins_id_seq; Type: SEQUENCE SET; Schema: public; Owner: garikk
 --
@@ -1246,7 +1315,7 @@ SELECT pg_catalog.setval('plugins_id_seq', 5, true);
 
 
 --
--- TOC entry 2193 (class 0 OID 16731)
+-- TOC entry 2200 (class 0 OID 16731)
 -- Dependencies: 185
 -- Data for Name: system_state; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1258,7 +1327,7 @@ COPY system_state (id, name, kkcontroller_version, state, base_version) FROM std
 
 
 --
--- TOC entry 2293 (class 0 OID 0)
+-- TOC entry 2306 (class 0 OID 0)
 -- Dependencies: 184
 -- Name: system_state_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1267,7 +1336,7 @@ SELECT pg_catalog.setval('system_state_id_seq', 1, true);
 
 
 --
--- TOC entry 2041 (class 2606 OID 33105)
+-- TOC entry 2048 (class 2606 OID 33105)
 -- Name: ODB_PID_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1276,7 +1345,7 @@ ALTER TABLE ONLY odb_pids
 
 
 --
--- TOC entry 2018 (class 2606 OID 16700)
+-- TOC entry 2025 (class 2606 OID 16700)
 -- Name: accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: garikk; Tablespace: 
 --
 
@@ -1285,7 +1354,7 @@ ALTER TABLE ONLY accounts
 
 
 --
--- TOC entry 2020 (class 2606 OID 16702)
+-- TOC entry 2027 (class 2606 OID 16702)
 -- Name: config_types_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1294,7 +1363,7 @@ ALTER TABLE ONLY config_types
 
 
 --
--- TOC entry 2023 (class 2606 OID 16704)
+-- TOC entry 2030 (class 2606 OID 16704)
 -- Name: configurations_pkey; Type: CONSTRAINT; Schema: public; Owner: garikk; Tablespace: 
 --
 
@@ -1303,7 +1372,7 @@ ALTER TABLE ONLY configurations
 
 
 --
--- TOC entry 2035 (class 2606 OID 24849)
+-- TOC entry 2042 (class 2606 OID 24849)
 -- Name: fk_id; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1312,7 +1381,7 @@ ALTER TABLE ONLY files
 
 
 --
--- TOC entry 2033 (class 2606 OID 16740)
+-- TOC entry 2040 (class 2606 OID 16740)
 -- Name: id; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1321,7 +1390,7 @@ ALTER TABLE ONLY system_state
 
 
 --
--- TOC entry 2039 (class 2606 OID 24905)
+-- TOC entry 2046 (class 2606 OID 24905)
 -- Name: k_id; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1330,7 +1399,7 @@ ALTER TABLE ONLY file_types
 
 
 --
--- TOC entry 2052 (class 2606 OID 41272)
+-- TOC entry 2059 (class 2606 OID 41272)
 -- Name: kkcar_commands_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1339,7 +1408,7 @@ ALTER TABLE ONLY kkcar_commands
 
 
 --
--- TOC entry 2058 (class 2606 OID 41310)
+-- TOC entry 2065 (class 2606 OID 41310)
 -- Name: kkcar_confinfo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1348,7 +1417,7 @@ ALTER TABLE ONLY kkcar_confinfo
 
 
 --
--- TOC entry 2054 (class 2606 OID 41294)
+-- TOC entry 2061 (class 2606 OID 41294)
 -- Name: kkcar_messages_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1357,7 +1426,7 @@ ALTER TABLE ONLY kkcar_messages
 
 
 --
--- TOC entry 2025 (class 2606 OID 16706)
+-- TOC entry 2032 (class 2606 OID 16706)
 -- Name: kkcar_pkey; Type: CONSTRAINT; Schema: public; Owner: garikk; Tablespace: 
 --
 
@@ -1366,7 +1435,7 @@ ALTER TABLE ONLY kkcar
 
 
 --
--- TOC entry 2047 (class 2606 OID 33138)
+-- TOC entry 2054 (class 2606 OID 33138)
 -- Name: liveinfo_dtc_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1375,7 +1444,7 @@ ALTER TABLE ONLY liveinfo_dtc
 
 
 --
--- TOC entry 2027 (class 2606 OID 16708)
+-- TOC entry 2034 (class 2606 OID 16708)
 -- Name: liveinfo_pkey; Type: CONSTRAINT; Schema: public; Owner: garikk; Tablespace: 
 --
 
@@ -1384,7 +1453,7 @@ ALTER TABLE ONLY liveinfo
 
 
 --
--- TOC entry 2044 (class 2606 OID 33103)
+-- TOC entry 2051 (class 2606 OID 33103)
 -- Name: manufacture_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1393,7 +1462,7 @@ ALTER TABLE ONLY manufacture
 
 
 --
--- TOC entry 2049 (class 2606 OID 33136)
+-- TOC entry 2056 (class 2606 OID 33136)
 -- Name: odb_dtc_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1402,7 +1471,7 @@ ALTER TABLE ONLY odb_dtc
 
 
 --
--- TOC entry 2029 (class 2606 OID 16710)
+-- TOC entry 2036 (class 2606 OID 16710)
 -- Name: plugins_pkey; Type: CONSTRAINT; Schema: public; Owner: garikk; Tablespace: 
 --
 
@@ -1411,7 +1480,7 @@ ALTER TABLE ONLY plugins
 
 
 --
--- TOC entry 2031 (class 2606 OID 24879)
+-- TOC entry 2038 (class 2606 OID 24879)
 -- Name: plugins_uuid_key; Type: CONSTRAINT; Schema: public; Owner: garikk; Tablespace: 
 --
 
@@ -1420,7 +1489,7 @@ ALTER TABLE ONLY plugins
 
 
 --
--- TOC entry 2021 (class 1259 OID 24877)
+-- TOC entry 2028 (class 1259 OID 24877)
 -- Name: FKI_kkcar; Type: INDEX; Schema: public; Owner: garikk; Tablespace: 
 --
 
@@ -1428,7 +1497,7 @@ CREATE INDEX "FKI_kkcar" ON configurations USING btree (kkcar);
 
 
 --
--- TOC entry 2055 (class 1259 OID 41327)
+-- TOC entry 2062 (class 1259 OID 41327)
 -- Name: fki_currconf; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1436,7 +1505,7 @@ CREATE INDEX fki_currconf ON kkcar_confinfo USING btree (currentconfig);
 
 
 --
--- TOC entry 2045 (class 1259 OID 33149)
+-- TOC entry 2052 (class 1259 OID 33149)
 -- Name: fki_kkcar; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1444,7 +1513,7 @@ CREATE INDEX fki_kkcar ON liveinfo_dtc USING btree (kkcar_id);
 
 
 --
--- TOC entry 2050 (class 1259 OID 41283)
+-- TOC entry 2057 (class 1259 OID 41283)
 -- Name: fki_kkcar_cmd; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1452,7 +1521,7 @@ CREATE INDEX fki_kkcar_cmd ON kkcar_commands USING btree (kkcar);
 
 
 --
--- TOC entry 2056 (class 1259 OID 41321)
+-- TOC entry 2063 (class 1259 OID 41321)
 -- Name: fki_kkcar_confinfo; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1460,7 +1529,7 @@ CREATE INDEX fki_kkcar_confinfo ON kkcar_confinfo USING btree (kkcar);
 
 
 --
--- TOC entry 2042 (class 1259 OID 33111)
+-- TOC entry 2049 (class 1259 OID 33111)
 -- Name: fki_manufacture; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1468,7 +1537,7 @@ CREATE INDEX fki_manufacture ON odb_pids USING btree (manufacture);
 
 
 --
--- TOC entry 2036 (class 1259 OID 24855)
+-- TOC entry 2043 (class 1259 OID 24855)
 -- Name: fki_owconf; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1476,7 +1545,7 @@ CREATE INDEX fki_owconf ON files USING btree (owner_conf);
 
 
 --
--- TOC entry 2037 (class 1259 OID 24911)
+-- TOC entry 2044 (class 1259 OID 24911)
 -- Name: fki_plugin; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1484,7 +1553,7 @@ CREATE INDEX fki_plugin ON files USING btree (owner_plugin);
 
 
 --
--- TOC entry 2060 (class 2606 OID 24872)
+-- TOC entry 2067 (class 2606 OID 24872)
 -- Name: FK_kkcar; Type: FK CONSTRAINT; Schema: public; Owner: garikk
 --
 
@@ -1493,7 +1562,7 @@ ALTER TABLE ONLY configurations
 
 
 --
--- TOC entry 2059 (class 2606 OID 16711)
+-- TOC entry 2066 (class 2606 OID 16711)
 -- Name: configurations_configurationtype_fkey; Type: FK CONSTRAINT; Schema: public; Owner: garikk
 --
 
@@ -1502,7 +1571,7 @@ ALTER TABLE ONLY configurations
 
 
 --
--- TOC entry 2064 (class 2606 OID 33070)
+-- TOC entry 2071 (class 2606 OID 33070)
 -- Name: files_owner_conf_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1511,7 +1580,7 @@ ALTER TABLE ONLY files
 
 
 --
--- TOC entry 2070 (class 2606 OID 41322)
+-- TOC entry 2077 (class 2606 OID 41322)
 -- Name: fk_currconf; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1520,7 +1589,7 @@ ALTER TABLE ONLY kkcar_confinfo
 
 
 --
--- TOC entry 2066 (class 2606 OID 33144)
+-- TOC entry 2073 (class 2606 OID 33144)
 -- Name: fk_kkcar; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1529,7 +1598,7 @@ ALTER TABLE ONLY liveinfo_dtc
 
 
 --
--- TOC entry 2067 (class 2606 OID 41278)
+-- TOC entry 2074 (class 2606 OID 41278)
 -- Name: fk_kkcar_cmd; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1538,7 +1607,7 @@ ALTER TABLE ONLY kkcar_commands
 
 
 --
--- TOC entry 2069 (class 2606 OID 41316)
+-- TOC entry 2076 (class 2606 OID 41316)
 -- Name: fk_kkcar_confinfo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1547,7 +1616,7 @@ ALTER TABLE ONLY kkcar_confinfo
 
 
 --
--- TOC entry 2065 (class 2606 OID 33106)
+-- TOC entry 2072 (class 2606 OID 33106)
 -- Name: fk_manufacture; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1556,7 +1625,7 @@ ALTER TABLE ONLY odb_pids
 
 
 --
--- TOC entry 2063 (class 2606 OID 24906)
+-- TOC entry 2070 (class 2606 OID 24906)
 -- Name: fk_plugin; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1565,7 +1634,7 @@ ALTER TABLE ONLY files
 
 
 --
--- TOC entry 2061 (class 2606 OID 16716)
+-- TOC entry 2068 (class 2606 OID 16716)
 -- Name: kkcar_ActiveConfiguration_fkey; Type: FK CONSTRAINT; Schema: public; Owner: garikk
 --
 
@@ -1574,7 +1643,7 @@ ALTER TABLE ONLY kkcar
 
 
 --
--- TOC entry 2068 (class 2606 OID 41295)
+-- TOC entry 2075 (class 2606 OID 41295)
 -- Name: kkcar_messages_kkcar_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1583,7 +1652,7 @@ ALTER TABLE ONLY kkcar_messages
 
 
 --
--- TOC entry 2062 (class 2606 OID 33112)
+-- TOC entry 2069 (class 2606 OID 33112)
 -- Name: liveinfo_ODB_PID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: garikk
 --
 
@@ -1592,7 +1661,7 @@ ALTER TABLE ONLY liveinfo
 
 
 --
--- TOC entry 2221 (class 0 OID 0)
+-- TOC entry 2230 (class 0 OID 0)
 -- Dependencies: 6
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
@@ -1604,7 +1673,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
--- TOC entry 2223 (class 0 OID 0)
+-- TOC entry 2232 (class 0 OID 0)
 -- Dependencies: 194
 -- Name: odb_pids; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1616,7 +1685,7 @@ GRANT ALL ON TABLE odb_pids TO kkcar_webservice;
 
 
 --
--- TOC entry 2225 (class 0 OID 0)
+-- TOC entry 2234 (class 0 OID 0)
 -- Dependencies: 193
 -- Name: ODB_PID_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1628,7 +1697,7 @@ GRANT ALL ON SEQUENCE "ODB_PID_id_seq" TO kkcar_webservice;
 
 
 --
--- TOC entry 2226 (class 0 OID 0)
+-- TOC entry 2235 (class 0 OID 0)
 -- Dependencies: 172
 -- Name: accounts; Type: ACL; Schema: public; Owner: garikk
 --
@@ -1639,7 +1708,7 @@ GRANT ALL ON TABLE accounts TO garikk;
 
 
 --
--- TOC entry 2228 (class 0 OID 0)
+-- TOC entry 2237 (class 0 OID 0)
 -- Dependencies: 173
 -- Name: accounts_id_seq; Type: ACL; Schema: public; Owner: garikk
 --
@@ -1650,7 +1719,31 @@ GRANT ALL ON SEQUENCE accounts_id_seq TO garikk;
 
 
 --
--- TOC entry 2229 (class 0 OID 0)
+-- TOC entry 2238 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: confeditor_blockview; Type: ACL; Schema: public; Owner: postgres
+--
+
+REVOKE ALL ON TABLE confeditor_blockview FROM PUBLIC;
+REVOKE ALL ON TABLE confeditor_blockview FROM postgres;
+GRANT ALL ON TABLE confeditor_blockview TO postgres;
+GRANT ALL ON TABLE confeditor_blockview TO kkcar_webservice;
+
+
+--
+-- TOC entry 2240 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: confeditor_blockview_id_seq; Type: ACL; Schema: public; Owner: postgres
+--
+
+REVOKE ALL ON SEQUENCE confeditor_blockview_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE confeditor_blockview_id_seq FROM postgres;
+GRANT ALL ON SEQUENCE confeditor_blockview_id_seq TO postgres;
+GRANT ALL ON SEQUENCE confeditor_blockview_id_seq TO kkcar_webservice;
+
+
+--
+-- TOC entry 2241 (class 0 OID 0)
 -- Dependencies: 174
 -- Name: config_types; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1661,7 +1754,7 @@ GRANT ALL ON TABLE config_types TO postgres;
 
 
 --
--- TOC entry 2231 (class 0 OID 0)
+-- TOC entry 2243 (class 0 OID 0)
 -- Dependencies: 175
 -- Name: config_types_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1672,7 +1765,7 @@ GRANT ALL ON SEQUENCE config_types_id_seq TO postgres;
 
 
 --
--- TOC entry 2232 (class 0 OID 0)
+-- TOC entry 2244 (class 0 OID 0)
 -- Dependencies: 176
 -- Name: configurations; Type: ACL; Schema: public; Owner: garikk
 --
@@ -1683,7 +1776,7 @@ GRANT ALL ON TABLE configurations TO garikk;
 
 
 --
--- TOC entry 2234 (class 0 OID 0)
+-- TOC entry 2246 (class 0 OID 0)
 -- Dependencies: 177
 -- Name: configurations_id_seq; Type: ACL; Schema: public; Owner: garikk
 --
@@ -1694,7 +1787,7 @@ GRANT ALL ON SEQUENCE configurations_id_seq TO garikk;
 
 
 --
--- TOC entry 2235 (class 0 OID 0)
+-- TOC entry 2247 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: file_types; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1706,7 +1799,7 @@ GRANT ALL ON TABLE file_types TO kkcar_webservice;
 
 
 --
--- TOC entry 2237 (class 0 OID 0)
+-- TOC entry 2249 (class 0 OID 0)
 -- Dependencies: 188
 -- Name: file_types_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1718,7 +1811,7 @@ GRANT ALL ON SEQUENCE file_types_id_seq TO kkcar_webservice;
 
 
 --
--- TOC entry 2238 (class 0 OID 0)
+-- TOC entry 2250 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: files; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1730,7 +1823,7 @@ GRANT ALL ON TABLE files TO kkcar_webservice;
 
 
 --
--- TOC entry 2240 (class 0 OID 0)
+-- TOC entry 2252 (class 0 OID 0)
 -- Dependencies: 186
 -- Name: files_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1742,7 +1835,7 @@ GRANT ALL ON SEQUENCE files_id_seq TO kkcar_webservice;
 
 
 --
--- TOC entry 2241 (class 0 OID 0)
+-- TOC entry 2253 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: kkcar; Type: ACL; Schema: public; Owner: garikk
 --
@@ -1753,7 +1846,7 @@ GRANT ALL ON TABLE kkcar TO garikk;
 
 
 --
--- TOC entry 2242 (class 0 OID 0)
+-- TOC entry 2254 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: kkcar_commands; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1765,7 +1858,7 @@ GRANT ALL ON TABLE kkcar_commands TO kkcar_webservice;
 
 
 --
--- TOC entry 2244 (class 0 OID 0)
+-- TOC entry 2256 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: kkcar_commands_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1777,7 +1870,7 @@ GRANT ALL ON SEQUENCE kkcar_commands_id_seq TO kkcar_webservice;
 
 
 --
--- TOC entry 2245 (class 0 OID 0)
+-- TOC entry 2257 (class 0 OID 0)
 -- Dependencies: 206
 -- Name: kkcar_confinfo; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1789,7 +1882,7 @@ GRANT ALL ON TABLE kkcar_confinfo TO kkcar_webservice;
 
 
 --
--- TOC entry 2247 (class 0 OID 0)
+-- TOC entry 2259 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: kkcar_confinfo_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1801,7 +1894,7 @@ GRANT ALL ON SEQUENCE kkcar_confinfo_id_seq TO kkcar_webservice;
 
 
 --
--- TOC entry 2249 (class 0 OID 0)
+-- TOC entry 2261 (class 0 OID 0)
 -- Dependencies: 179
 -- Name: kkcar_id_seq; Type: ACL; Schema: public; Owner: garikk
 --
@@ -1812,7 +1905,7 @@ GRANT ALL ON SEQUENCE kkcar_id_seq TO garikk;
 
 
 --
--- TOC entry 2250 (class 0 OID 0)
+-- TOC entry 2262 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: kkcar_messages; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1824,7 +1917,7 @@ GRANT ALL ON TABLE kkcar_messages TO kkcar_webservice;
 
 
 --
--- TOC entry 2252 (class 0 OID 0)
+-- TOC entry 2264 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: kkcar_messages_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1836,7 +1929,7 @@ GRANT ALL ON SEQUENCE kkcar_messages_id_seq TO kkcar_webservice;
 
 
 --
--- TOC entry 2253 (class 0 OID 0)
+-- TOC entry 2265 (class 0 OID 0)
 -- Dependencies: 180
 -- Name: liveinfo; Type: ACL; Schema: public; Owner: garikk
 --
@@ -1847,7 +1940,7 @@ GRANT ALL ON TABLE liveinfo TO garikk;
 
 
 --
--- TOC entry 2254 (class 0 OID 0)
+-- TOC entry 2266 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: liveinfo_dtc; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1859,7 +1952,7 @@ GRANT ALL ON TABLE liveinfo_dtc TO kkcar_webservice;
 
 
 --
--- TOC entry 2256 (class 0 OID 0)
+-- TOC entry 2268 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: liveinfo_dtc_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1871,7 +1964,7 @@ GRANT ALL ON SEQUENCE liveinfo_dtc_id_seq TO kkcar_webservice;
 
 
 --
--- TOC entry 2258 (class 0 OID 0)
+-- TOC entry 2270 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: liveinfo_id_seq; Type: ACL; Schema: public; Owner: garikk
 --
@@ -1882,7 +1975,7 @@ GRANT ALL ON SEQUENCE liveinfo_id_seq TO garikk;
 
 
 --
--- TOC entry 2259 (class 0 OID 0)
+-- TOC entry 2271 (class 0 OID 0)
 -- Dependencies: 192
 -- Name: liveinfo_request; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1894,7 +1987,7 @@ GRANT ALL ON TABLE liveinfo_request TO kkcar_webservice;
 
 
 --
--- TOC entry 2261 (class 0 OID 0)
+-- TOC entry 2273 (class 0 OID 0)
 -- Dependencies: 191
 -- Name: liveinfo_request_configuration_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1906,7 +1999,7 @@ GRANT ALL ON SEQUENCE liveinfo_request_configuration_id_seq TO kkcar_webservice;
 
 
 --
--- TOC entry 2263 (class 0 OID 0)
+-- TOC entry 2275 (class 0 OID 0)
 -- Dependencies: 190
 -- Name: liveinfo_request_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1918,7 +2011,7 @@ GRANT ALL ON SEQUENCE liveinfo_request_id_seq TO kkcar_webservice;
 
 
 --
--- TOC entry 2264 (class 0 OID 0)
+-- TOC entry 2276 (class 0 OID 0)
 -- Dependencies: 196
 -- Name: manufacture; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1930,7 +2023,7 @@ GRANT ALL ON TABLE manufacture TO kkcar_webservice;
 
 
 --
--- TOC entry 2266 (class 0 OID 0)
+-- TOC entry 2278 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: manufacture_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1942,7 +2035,7 @@ GRANT ALL ON SEQUENCE manufacture_id_seq TO kkcar_webservice;
 
 
 --
--- TOC entry 2267 (class 0 OID 0)
+-- TOC entry 2279 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: odb_dtc; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1954,7 +2047,7 @@ GRANT ALL ON TABLE odb_dtc TO kkcar_webservice;
 
 
 --
--- TOC entry 2269 (class 0 OID 0)
+-- TOC entry 2281 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: odb_dtc_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1966,7 +2059,7 @@ GRANT ALL ON SEQUENCE odb_dtc_id_seq TO kkcar_webservice;
 
 
 --
--- TOC entry 2270 (class 0 OID 0)
+-- TOC entry 2282 (class 0 OID 0)
 -- Dependencies: 182
 -- Name: plugins; Type: ACL; Schema: public; Owner: garikk
 --
@@ -1977,7 +2070,7 @@ GRANT ALL ON TABLE plugins TO garikk;
 
 
 --
--- TOC entry 2272 (class 0 OID 0)
+-- TOC entry 2284 (class 0 OID 0)
 -- Dependencies: 183
 -- Name: plugins_id_seq; Type: ACL; Schema: public; Owner: garikk
 --
@@ -1988,7 +2081,7 @@ GRANT ALL ON SEQUENCE plugins_id_seq TO garikk;
 
 
 --
--- TOC entry 2273 (class 0 OID 0)
+-- TOC entry 2285 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: system_state; Type: ACL; Schema: public; Owner: postgres
 --
@@ -2000,7 +2093,7 @@ GRANT ALL ON TABLE system_state TO kkcar_webservice;
 
 
 --
--- TOC entry 2275 (class 0 OID 0)
+-- TOC entry 2287 (class 0 OID 0)
 -- Dependencies: 184
 -- Name: system_state_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
@@ -2012,7 +2105,7 @@ GRANT ALL ON SEQUENCE system_state_id_seq TO kkcar_webservice;
 
 
 --
--- TOC entry 1663 (class 826 OID 16723)
+-- TOC entry 1669 (class 826 OID 16723)
 -- Name: DEFAULT PRIVILEGES FOR SEQUENCES; Type: DEFAULT ACL; Schema: -; Owner: postgres
 --
 
@@ -2023,7 +2116,7 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON SEQUENCES  TO kkcar_webs
 
 
 --
--- TOC entry 1665 (class 826 OID 16725)
+-- TOC entry 1671 (class 826 OID 16725)
 -- Name: DEFAULT PRIVILEGES FOR TYPES; Type: DEFAULT ACL; Schema: -; Owner: postgres
 --
 
@@ -2035,7 +2128,7 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON TYPES  TO kkcar_webservi
 
 
 --
--- TOC entry 1664 (class 826 OID 16724)
+-- TOC entry 1670 (class 826 OID 16724)
 -- Name: DEFAULT PRIVILEGES FOR FUNCTIONS; Type: DEFAULT ACL; Schema: -; Owner: postgres
 --
 
@@ -2047,7 +2140,7 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON FUNCTIONS  TO kkcar_webs
 
 
 --
--- TOC entry 1661 (class 826 OID 16721)
+-- TOC entry 1667 (class 826 OID 16721)
 -- Name: DEFAULT PRIVILEGES FOR TABLES; Type: DEFAULT ACL; Schema: public; Owner: garikk
 --
 
@@ -2057,7 +2150,7 @@ ALTER DEFAULT PRIVILEGES FOR ROLE garikk IN SCHEMA public GRANT ALL ON TABLES  T
 
 
 --
--- TOC entry 1662 (class 826 OID 16722)
+-- TOC entry 1668 (class 826 OID 16722)
 -- Name: DEFAULT PRIVILEGES FOR TABLES; Type: DEFAULT ACL; Schema: -; Owner: postgres
 --
 
@@ -2067,7 +2160,7 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON TABLES  TO postgres;
 ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON TABLES  TO kkcar_webservice;
 
 
--- Completed on 2015-08-28 15:36:43
+-- Completed on 2015-09-04 20:11:25
 
 --
 -- PostgreSQL database dump complete
