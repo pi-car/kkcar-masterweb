@@ -84,5 +84,20 @@ class model_configuration extends Model {
     
 
     }
+      public function get_plugins() {
+
+        return $this->dbc->ExecQuery(
+                       " SELECT "
+                       ."         plugins.id, "
+                        ."        plugins.uuid, "
+                        ."        plugins.name, "
+                        ."        plugins.description, "
+                        ."        plugins.pins_in, "
+                        ."        plugins.pins_out "
+                        ." FROM "
+                        ."        plugins",Array());
+    
+
+    }
 }
     
