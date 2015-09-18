@@ -222,8 +222,8 @@ function OpenPluginEditor(id)
     //
     for (var i=0;i<CurrentFeature.Connections.length;i++)
     {
-        $("#kk_config_plugineditor_connections").add($("#kk_config_plugineditor_connection").clone().attr('id',"#kk_config_plugineditor_connection_"+i));
-         $("#kk_config_plugineditor_connection_"+i)
+        $("#kk_config_plugineditor_connections").append($("#kk_config_plugineditor_connection").clone().attr('id',"kk_config_plugineditor_connection_"+i));
+        $("#kk_config_plugineditor_connection_"+i).text(CurrentFeature.Connections[i].ConnectionName);
     }
     
 }
