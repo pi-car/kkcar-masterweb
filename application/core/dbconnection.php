@@ -32,5 +32,5 @@ class dbconnection {
         $res= pg_fetch_row($result);
         return  $res;
     }
-    
+
 }
