@@ -19,6 +19,9 @@
         const ACT_CTRLR_GET_FILES_INFO_BIN = 10;          //get bin files info
         const ACT_CTRLR_GET_FILES_INFO_EXTCONF = 11;        //get conf files info
         const ACT_CTRLR_DATA_KKPIN = 50;               //KKSystem PIN
+        //EXTConnector
+        const ACT_CTRLR_EXTCONN_GETPINDATA = 80;          
+        const ACT_CTRLR_EXTCONN_PUTPINDATA = 81;          
 
 
         const PARAM_CTRLR_POST_REQUEST_ACT = "action";
@@ -26,5 +29,6 @@
         const PARAM_CTRLR_POST_REQUEST_CONFUUID = "confuid";
         const PARAM_CTRLR_POST_REQUEST_REQFILESBIN = "reqfilesbin";
         const PARAM_CTRLR_POST_REQUEST_OBJ = "json_object";
+        //EXTConnector
 
 

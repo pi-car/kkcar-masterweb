@@ -23,33 +23,13 @@ class model_extconnector extends Model {
         $MyID = '2e2efd7b-ab83-42fa-9c00-2e45bb4b3ba1';
 
         $Ret = $this->dbc->ExecQuery(
-                "SELECT "
-                . "    pinmessage, "
-                . "    pinid, "
-                . "    kkcar_id, "
-                . "    status"
-                . "  FROM "
-                . "   extconnector"
-                . "  WHERE "
-                . "     kkcar_id = "
-                . "     (SELECT "
-                . "         kkcar.id "
-                . "      FROM "
-                . "         kkcar "
-                . "      WHERE "
-                . "         kkcar.uuid=$1)"
-                . "   AND "
-                . "   timestamp<=$2"
-                . "    AND"
-                . "   status=true;", array($MyID, $ReqTS));
-
-
-        $this->dbc->ExecQuery(
                 "UPDATE "
                 . "   extconnector "
                 . "   SET "
                 . "    status=false "
                 . "  WHERE "
+                . "     direction=1 "
+                . "     AND "
                 . "     kkcar_id = "
                 . "     (SELECT "
                 . "         kkcar.id "
@@ -60,11 +40,47 @@ class model_extconnector extends Model {
                 . "   AND "
                 . "   timestamp<=$2"
                 . "    AND"
-                . "   status=true;", array($MyID, $ReqTS));
- 
+                . "   status=true "
+                . " RETURNING "
+                . "  pinmessage, "
+                . "    pinid, "
+                . "    kkcar_id, "
+                . "    status", array($MyID, $ReqTS));
+
 
 
         return $Ret;
     }
+    public function put_pinmessages($MyID, $direction,$pinid,$pindata) {
+        $ReqTS = time();
 
+        $MyID = '2e2efd7b-ab83-42fa-9c00-2e45bb4b3ba1';
+
+        $Ret = $this->dbc->ExecQuery(
+                "INSERT INTO"
+                . "   extconnector "
+                . "   ( "
+                . "     timestamp, "
+                . "     direction,"
+                . "     pinid,"
+                . "     pindata,"
+                . "     status"
+                . "     kkcar_conf_id"
+                . "    ) "
+                . "     VALUES ("
+                . "    ". $ReqTS .","
+                . "    ". $direction .","
+                . "    ". $pinid .","
+                . "    ". $pinid .","
+                . "    true,"
+                . "    (SELECT "
+                . "         kkcar.activeconfiguration "
+                . "      FROM "
+                . "         kkcar "
+                . "      WHERE "
+                . "         kkcar.uuid=$1)"
+                . "    ) ", array($MyID, $ReqTS));
+
+        return $Ret;
+    }
 }

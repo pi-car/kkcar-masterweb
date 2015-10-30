@@ -17,7 +17,7 @@ class Controller_extconnector extends wservice {
         $this->model = new model_extconnector();
     }
 
-    function Action_postpinmessages() {
+    function Action_extconnector() {
         if (!isset($_POST[PARAM_CTRLR_POST_REQUEST_ACT])) {
             $this->AnswerError('bad request');
             return;
@@ -27,32 +27,16 @@ class Controller_extconnector extends wservice {
         $myid = filter_input(INPUT_POST, PARAM_CTRLR_POST_REQUEST_MYUUID);
 
         switch ($action) {
-            case ACT_CTRLR_GET_MYCONF_INFO:
-                $this->GetConfigurationInfo($myid);
+            case ACT_CTRLR_EXTCONN_GETPINDATA:
+                $this->GetPinMessages($myid);
                 break;
-            case ACT_CTRLR_GET_MYCONF_DATA:
+            case ACT_CTRLR_EXTCONN_PUTPINDATA:
                 $this->GetConfigurationData($myid);
-                break;
-            case ACT_CTRLR_GET_PLUGIN_INFO:
-                break;
-            case ACT_CTRLR_GET_PLUGIN_DATA:
-                break;
-            case ACT_CTRLR_GET_FILES_INFO_BIN:
-                $this->GetFilesInfo($myid, True);
-                break;
-            case ACT_CTRLR_GET_FILES_INFO_EXTCONF:
-                $this->GetFilesInfo($myid, False);
                 break;
             default:
                 AnswerError();
                 break;
         }
-    }
-
-    function Action_getpinmessages() {
-        $myid = filter_input(INPUT_POST, PARAM_CTRLR_POST_REQUEST_MYUUID);
-
-        $this->GetPinMessages(1); //$myid);
     }
 
     function GetPinMessages($MyID) {
@@ -65,6 +49,20 @@ class Controller_extconnector extends wservice {
         );
         header('Content-type: application/json');
         echo json_encode($res);
+        die();
+    }
+
+    function PutPinMessages($MyID) {
+        $resData = $this->model->put_pinmessages($MyID);
+
+        $res = array(
+            'AnswerState' => '0',
+            'Version' => 1,
+            'JsonData' => json_encode($resData)
+        );
+        header('Content-type: application/json');
+        echo json_encode($res);
+        die();
     }
 
     function AnswerError($dat) {

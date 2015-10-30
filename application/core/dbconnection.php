@@ -20,6 +20,7 @@ class dbconnection {
     
     public function ExecQuery($query,$params)
     {
+
         $result = pg_query_params($this->dbconn,$query,$params);
         pg_close($this->dbconn);
         $res= pg_fetch_all($result);
