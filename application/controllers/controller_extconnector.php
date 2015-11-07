@@ -34,7 +34,7 @@ class Controller_extconnector extends wservice {
                 $this->GetConfigurationData($myid);
                 break;
             default:
-                AnswerError();
+                $this->AnswerError("Not action");
                 break;
         }
     }
