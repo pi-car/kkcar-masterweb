@@ -11,7 +11,8 @@
  *
  * @author blinov_is
  */
-
+        //ACTIONS
+        //KKController
         const ACT_CTRLR_GET_MYCONF_INFO = 1;           //get ctrlr configuration, ID, stamp
         const ACT_CTRLR_GET_MYCONF_DATA = 2;           //get ctrlr configuration
         const ACT_CTRLR_GET_PLUGIN_INFO = 5;          //get plugins id, version and config stamp
@@ -22,8 +23,15 @@
         //EXTConnector
         const ACT_CTRLR_EXTCONN_GETPINDATA = 80;          
         const ACT_CTRLR_EXTCONN_PUTPINDATA = 81;          
+        //PhoneApp
+        const ACT_PHONEAPP_GET_CARINFO = 1;
+        const ACT_PHONEAPP_GET_DIAGINFO = 2;
+        const ACT_PHONEAPP_GET_MEDIA = 3;
 
 
+
+        //PARAMETERS
+        //KKController
         const PARAM_CTRLR_POST_REQUEST_ACT = "action";
         const PARAM_CTRLR_POST_REQUEST_MYUUID = "myid";
         const PARAM_CTRLR_POST_REQUEST_CONFUUID = "confuid";
@@ -31,4 +39,7 @@
         const PARAM_CTRLR_POST_REQUEST_OBJ = "json_object";
         //EXTConnector
 
-
+        //PhoneApp
+        const PARAM_PHONEAPP_POST_REQUEST_ACT = "action";
+        const PARAM_PHONEAPP_POST_REQUEST_MYUUID = "myid";
+        const PARAM_PHONEAPP_POST_REQUEST_CONFUUID = "confuid";
