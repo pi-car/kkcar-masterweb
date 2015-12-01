@@ -52,6 +52,8 @@ class model_diagnostic extends Model {
                         . " WHERE "
                         . "     (odb_dtc.id=liveinfo_dtc.dtc_val)"
                         . " AND"
+                        . "     liveinfo_dtc.active=true"
+                        . " AND"
                         . "     liveinfo_dtc.kkcar_id = "
                         . "     (SELECT "
                         . "         kkcar.id "

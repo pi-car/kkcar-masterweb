@@ -30,7 +30,7 @@ class model_configuration extends Model {
                         . "  kkcar_confinfo.osversion as osversion,	"
                         . "  kkcar_confinfo.confstatus as kkcconfstatus,	"
                         . "  kkcar_confinfo.carstatus as carstatus,	"
-                        . "  kkcar_confinfo.timestamp as timestamp	"
+                        . "  kkcar_confinfo.timestamp as timestamp,	"
                         . "  kkcar_confinfo.enginestatus as enginestatus	"
                         . " FROM "
                         . "  kkcar_confinfo,configurations "

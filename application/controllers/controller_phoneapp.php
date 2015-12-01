@@ -11,12 +11,18 @@
  *
  * @author blinov_is
  */
+include "application/models/model_configuration.php";
+include "application/models/model_diagnostic.php";
+
 class Controller_phoneapp extends wservice {
+    
+    
     private $confmodel;
     
     function __construct() {
         $this->model = new model_phoneapp();
         $this->confmodel=new model_configuration();
+        $this->diagmodel=new model_diagnostic();
     }
 
     function Action_request() {
@@ -32,6 +38,8 @@ class Controller_phoneapp extends wservice {
             case ACT_PHONEAPP_GET_CARINFO:
                 $this->GetCarInfo($myid);
                 break;
+            case ACT_PHONEAPP_GET_DIAGINFO:
+                $this->GetDiagInfo($myid);
             default:
                 AnswerError();
                 break;
@@ -40,6 +48,18 @@ class Controller_phoneapp extends wservice {
 
     function GetCarInfo($MyID) {
         $resData = $this->confmodel->get_getconfinfo($MyID);
+
+        $res = array(
+            'AnswerState' => '0',
+            'Version' => 1,
+            'JsonData' => json_encode($resData),
+            'AnswerDescription'=>'Car data, Ok'
+        );
+        header('Content-type: application/json');
+        echo json_encode($res);
+    }
+     function GetDiagInfo($MyID) {
+        $resData = $this->diagmodel->get_dtccodes($MyID);
 
         $res = array(
             'AnswerState' => '0',
