@@ -36,16 +36,16 @@ class model_extconnector extends Model {
                 . "      FROM "
                 . "         kkcar "
                 . "      WHERE "
-                . "         kkcar.uuid=$1)"
+                . "         kkcar.uuid='".$MyID."')"
                 . "   AND "
-                . "   timestamp<=$2"
+                . "   timestamp<=".$ReqTS.""
                 . "    AND"
                 . "   status=true "
                 . " RETURNING "
                 . "  pinmessage, "
                 . "    pinid, "
                 . "    kkcar_id, "
-                . "    status", array($MyID, $ReqTS));
+                . "    status");
 
 
 
@@ -78,8 +78,8 @@ class model_extconnector extends Model {
                 . "      FROM "
                 . "         kkcar "
                 . "      WHERE "
-                . "         kkcar.uuid=$1)"
-                . "    ) ", array($MyID, $ReqTS));
+                . "         kkcar.uuid='".$MyID."')"
+                . "    ) ");
 
         return $Ret;
     }

@@ -20,7 +20,7 @@ function RequestConfInfo()
 
 function UpdateRightBarConfInfo(Data)
 {
-    Data=Data[0];
+    //Data=Data[0];
     $("#kk_config_confinfo_carname").text(Data.carinfo);
     $("#kk_config_confinfo_confname").text(Data.confname);
     $("#kk_config_confinfo_confversion_act").text(Data.confversion_act);
