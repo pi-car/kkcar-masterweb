@@ -26,7 +26,7 @@ class model_diagnostic extends Model {
                         . "     liveinfo.value as value,"
                         . "     liveinfo.timestamp as timestamp"
                         . " FROM "
-                        . " \"odb_pids\", liveinfo "
+                        . " odb_pids, liveinfo "
                         . " WHERE "
                         . "     (odb_pids.id=liveinfo.param_id)"
                         . " AND"
@@ -36,7 +36,7 @@ class model_diagnostic extends Model {
                         . "      FROM "
                         . "         kkcar "
                         . "      WHERE "
-                        . "         kkcar.uuid=$1)", array($MyID));
+                        . "         kkcar.uuid='".$MyID."')");
     }
 
     public function get_dtccodes($MyID) {
@@ -60,7 +60,7 @@ class model_diagnostic extends Model {
                         . "     FROM "
                         . "         kkcar "
                         . "     WHERE "
-                        . "         kkcar.uuid=$1)", array($MyID));
+                        . "         kkcar.uuid='".$MyID."')");
     }
     
     public function registercmd_cleardtc($MyID) {
@@ -82,7 +82,7 @@ class model_diagnostic extends Model {
                         . "     FROM "
                         . "         kkcar "
                         . "     WHERE "
-                        . "         kkcar.uuid=$1)", array($MyID));
+                        . "         kkcar.uuid='".$MyID."')");
     }
 
 }

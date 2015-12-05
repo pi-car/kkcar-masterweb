@@ -18,9 +18,7 @@ class model_configuration extends Model {
     }
 
     public function get_getconfinfo($MyID) {
-
-        return $this->dbc->ExecQuery(
-                        "SELECT "
+        $query= "SELECT "
                         . "  kkcar_confinfo.id as paramid, "
                         . "  kkcar_confinfo.carinfo as carinfo, "
                         . "  configurations.name as confname, "
@@ -37,13 +35,18 @@ class model_configuration extends Model {
                         . " WHERE "
                         . "  kkcar_confinfo.kkcar=configurations.id "
                         . " AND "
-                        . "  kkcar_confinfo.kkcar = "
+                        . "  kkcar_confinfo.kkcar IN "
                         . "  (SELECT "
                         . "      kkcar.id "
                         . "   FROM "
                         . "      kkcar "
                         . "   WHERE "
-                        . "      kkcar.uuid=$1)", array($MyID));
+                        //. "      kkcar.uuid ='".$MyID."')";
+                        . "      kkcar.uuid IN (".  implode(",", array("'".$MyID."'"))."))";
+        
+    
+        
+        return $this->dbc->ExecQuery($query);
     }
 
     public function get_activecommands($MyID) {
@@ -64,7 +67,7 @@ class model_configuration extends Model {
                         . "      FROM "
                         . "         kkcar "
                         . "      WHERE "
-                        . "         kkcar.uuid=$1)", array($MyID));
+                        . "         kkcar.uuid='".$MyID."')");
     }
     
      public function get_pluginsconfiguration($MyID) {
@@ -80,8 +83,7 @@ class model_configuration extends Model {
                         . " WHERE "
                         . "  configurations.ownerconf=kkcar.activeconfiguration "
                         . " AND "
-                        . "  kkcar.uuid=$1 "
-                        , array($MyID));
+                        . "  kkcar.uuid='".$MyID."' ");
     
 
     }
@@ -96,7 +98,7 @@ class model_configuration extends Model {
                         ."        plugins.pins_in, "
                         ."        plugins.pins_out "
                         ." FROM "
-                        ."        plugins",Array());
+                        ."        plugins");
     
 
     }

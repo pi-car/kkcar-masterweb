@@ -22,14 +22,20 @@ function RequestActiveCommands()
 {
     var LiveData;
     $.getJSON('/configuration/getactivecommands', function (Data) {
-        UpdateActiveCommandsList(Data);
+        if (Data!==null)
+        {
+           UpdateActiveCommandsList(Data);
+        }
     });
 }
 function RequestDTCCodes()
 {
     var LiveData;
     $.getJSON('/diagnostic/getdtccodes', function (Data) {
-        UpdateLiveInfoTableDTC(Data);
+        if (Data!==null)
+        {
+           UpdateLiveInfoTableDTC(Data);
+        }
     });
 }
 
@@ -37,7 +43,10 @@ function RequestLiveData()
 {
     var LiveData;
     $.getJSON('/diagnostic/getliveinfo', function (Data) {
-        UpdateLiveInfoTable(Data);
+         if (Data!==null)
+        {
+           UpdateLiveInfoTable(Data);
+        }
 
         setTimeout("RequestLiveData();", kk_diag_livedata_timerInterval);
     });

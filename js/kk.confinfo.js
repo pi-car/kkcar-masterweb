@@ -13,14 +13,14 @@ function RequestConfInfo()
 {
     var LiveData;
     $.getJSON('/configuration/getconfinfo', function (Data) {
-        UpdateRightBarConfInfo(Data);
+        UpdateRightBarConfInfo(Data[0]);
     });
 }
 
 
 function UpdateRightBarConfInfo(Data)
 {
-    Data=Data[0];
+    //Data=Data[0];
     $("#kk_config_confinfo_carname").text(Data.carinfo);
     $("#kk_config_confinfo_confname").text(Data.confname);
     $("#kk_config_confinfo_confversion_act").text(Data.confversion_act);

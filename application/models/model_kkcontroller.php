@@ -34,7 +34,7 @@ class model_kkcontroller extends Model {
                             . " INNER JOIN configurations"
                             . " ON (configurations.id=kkcar.activeconfiguration)"
                             . " INNER JOIN system_state ON (system_state.state=1)"
-                            . " WHERE kkcar.uuid=$1", array($MyID));
+                            . " WHERE kkcar.uuid='".$MyID."'");
     }
 
     public function get_config_data($MyID) {
@@ -56,7 +56,7 @@ class model_kkcontroller extends Model {
                         ."  ON "
                         ."      (kkcar.id=configurations.id) "
                         ."  WHERE "
-                        ."      kkcar.uuid=$1)", array($MyID));
+                        ."      kkcar.uuid='".$MyID."')");
     }
 
     public function get_files_info($MyID, $RequiredFiles, $ConfigUID, $IsBinFiles) {
@@ -77,7 +77,7 @@ class model_kkcontroller extends Model {
                         ." FROM "
                         ."  files"
                         ." WHERE"
-                        ."  files.owner_plugin IN ($1)", array($RequiredFiles));
+                        ."  files.owner_plugin IN (".implode(",",array($RequiredFiles)).")");
         }
     }
 

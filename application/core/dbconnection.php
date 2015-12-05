@@ -15,22 +15,32 @@ class dbconnection {
     private $dbconn;
     
     function __construct() {
-         $this->dbconn = pg_connect("host=localhost dbname=kkcar user=kkcar password=kkcar");
+         $this->dbconn = mysqli_connect("127.0.0.1","u0133909_default","kkar123","u0133909_default");
     }
     
-    public function ExecQuery($query,$params)
+    public function ExecQuery($query)//,$params)
     {
+//        echo $query;
+//       die();
+        
+        $queryresult=$this->dbconn->query($query);
 
-        $result = pg_query_params($this->dbconn,$query,$params);
-        pg_close($this->dbconn);
-        $res= pg_fetch_all($result);
+        if ($queryresult==false)
+            return;
+        
+        $res=$queryresult->fetch_all(MYSQLI_ASSOC);
+        
+        mysqli_free_result($queryresult);
+        mysqli_close($this->dbconn);
         return  $res;
     }
-   public function ExecQuerySingle($query,$params)
+   public function ExecQuerySingle($query)//,$params)
     {
-        $result = pg_query_params($this->dbconn,$query,$params);
-        pg_close($this->dbconn);
-        $res= pg_fetch_row($result);
+      $queryresult=$this->dbconn->query($query);
+        $res=$queryresult->fetch_row();
+        mysqli_free_result($queryresult);
+        mysqli_close($this->dbconn);
+
         return  $res;
     }
 
