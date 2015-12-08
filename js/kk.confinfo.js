@@ -13,7 +13,7 @@ function RequestConfInfo()
 {
     var LiveData;
     $.getJSON('/configuration/getconfinfo', function (Data) {
-        UpdateRightBarConfInfo(Data);
+        UpdateRightBarConfInfo(Data[0]);
     });
 }
 
