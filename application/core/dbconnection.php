@@ -20,24 +20,12 @@ class dbconnection {
     
     public function ExecQuery($query)//,$params)
     {
-<<<<<<< HEAD
-        echo $query;
-        die;
-=======
-//        echo $query;
-//       die();
-        
->>>>>>> 77428ffacf7baf4094a3e3e2ee11bceb922c241b
         $queryresult=$this->dbconn->query($query);
 
         if ($queryresult==false)
             return;
         
-<<<<<<< HEAD
-        $res=$queryresult->fetch_assoc();
-=======
         $res=$queryresult->fetch_all(MYSQLI_ASSOC);
->>>>>>> 77428ffacf7baf4094a3e3e2ee11bceb922c241b
         
         mysqli_free_result($queryresult);
         mysqli_close($this->dbconn);
@@ -46,16 +34,10 @@ class dbconnection {
    public function ExecQuerySingle($query)//,$params)
     {
       $queryresult=$this->dbconn->query($query);
-<<<<<<< HEAD
-        $res=$queryresult->mysqli_fetch_row();
-        mysqli_free_result($queryresult);
-        mysqli_close($this->dbconn);
-=======
         $res=$queryresult->fetch_row();
         mysqli_free_result($queryresult);
         mysqli_close($this->dbconn);
 
->>>>>>> 77428ffacf7baf4094a3e3e2ee11bceb922c241b
         return  $res;
     }
 
