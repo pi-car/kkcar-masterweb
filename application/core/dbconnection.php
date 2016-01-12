@@ -15,7 +15,7 @@ class dbconnection {
     private $dbconn;
     
     function __construct() {
-         $this->dbconn = mysqli_connect("127.0.0.1","u0133909_default","kkar123","u0133909_default");
+         $this->dbconn = mysqli_connect("127.0.0.1","u0133909_default","kkcar123","kkcar");
     }
     
     public function ExecQuery($query)//,$params)

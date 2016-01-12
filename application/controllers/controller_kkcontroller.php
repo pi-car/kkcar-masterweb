@@ -43,12 +43,22 @@ class Controller_kkcontroller extends wservice {
             case ACT_CTRLR_GET_FILES_INFO_EXTCONF:
                 $this->GetFilesInfo($myid,False);
                 break;
+             case ACT_CTRLR_CMD_REBOOT_KKCTRL:
+                $this->CreateRebootKKCommand();
+                break;
             default:
                 AnswerError();
                 break;
         }
     }
 
+    function CreateRebootKKCommand()
+    {
+        
+        
+    }
+    
+    
     function GetConfigurationInfo($MyID) {
         $resData = $this->model->get_config($MyID);
 

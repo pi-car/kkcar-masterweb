@@ -20,6 +20,11 @@
         const ACT_CTRLR_GET_FILES_INFO_BIN = 10;          //get bin files info
         const ACT_CTRLR_GET_FILES_INFO_EXTCONF = 11;        //get conf files info
         const ACT_CTRLR_DATA_KKPIN = 50;               //KKSystem PIN
+        const ACT_CTRLR_CMD_REBOOT_KKCTRL = 100;
+        const ACT_CTRLR_CMD_REBOOT_HW = 101;
+        const ACT_CTRLR_CMD_POWEROFF_HW = 102;
+        //
+        //
         //EXTConnector
         const ACT_CTRLR_EXTCONN_GETPINDATA = 80;          
         const ACT_CTRLR_EXTCONN_PUTPINDATA = 81;          

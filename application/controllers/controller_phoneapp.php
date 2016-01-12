@@ -40,6 +40,7 @@ class Controller_phoneapp extends wservice {
                 break;
             case ACT_PHONEAPP_GET_DIAGINFO:
                 $this->GetDiagInfo($myid);
+		break;
             default:
                 AnswerError();
                 break;
